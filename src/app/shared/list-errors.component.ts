@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 
 import { Errors } from '../core';
 
 @Component({
   selector: 'app-list-errors',
-  templateUrl: './list-errors.component.html'
+  templateUrl: './list-errors.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ListErrorsComponent {
   formattedErrors: Array<string> = [];
@@ -17,5 +18,7 @@ export class ListErrorsComponent {
 
   get errorList() { return this.formattedErrors; }
 
-
+  trackByFn(index, item) {
+    return index;
+  }
 }
